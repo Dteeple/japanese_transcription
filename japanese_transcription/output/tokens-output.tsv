@@ -1,0 +1,26 @@
+type	token	transcription	source
+word	日本	NIHON'	kanji dict
+word	すごい	SUGOI	kanji dict
+word	食べる	TABERU	kanji dict
+word	パソコン	PASOKON'	kanji dict
+word	Sony	SOONII	small Romaji dictionary
+word	Joseph	JOOSEFU	small Romaji dictionary
+word	David	DEIBIDDO	small Romaji dictionary
+word	oov	---	transliterated
+word	店員	TEN'IN'	kanji dict
+num	32802	SAN MAN NI SEN HAPPYAKU NI	number parser
+num	3,209	SAN SEN NIHYAKU KYUU	number parser
+num	一〇〇	ICHI REI REI 	number parser
+num	四百六十九	YON HYAKU ROKU JUU KYUU 	number parser
+num	469	YONHYAKU ROKU JUU KYUU	number parser
+num	1つ	HITOTSU	number parser
+num	四つ	YOTTSU 	number parser
+num	10	JUU	number parser
+num	10,001	IMMAN ICHI	number parser
+num	45,678,122	YON SEN MAN GOHYAKU ROKU JUU NANA MAN HACHI SEN HYAKU NI JUU NI	number parser
+num	45.679	YON JUU GO TEN ROKU SHICHI KYUU	number parser
+num	20100	NI MAN HYAKU	number parser
+num	6,500,504	ROPPYAKU GO JUU MAN GOHYAKU YON	number parser
+num	一人	HITORI	number parser
+num	二人	FUTARI	number parser
+num	三つ	MITTSU 	number parser

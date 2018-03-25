@@ -1,0 +1,4 @@
+orth	phon
+Sony	SOONII
+Joseph	JOOSEFU
+David	DEIBIDDO
