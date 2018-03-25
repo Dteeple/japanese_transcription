@@ -13,7 +13,7 @@ To run:
 
 > python3 transcribe.py
 
-Takes the file /input/tokens.tsv as input.
+Takes the file /input/tokens.tsv as input.  The required format is two columns, where the first column gives the type of data (word vs. num) and the second column is a space-separated string of tokens to be transcribed.
 
 Will output a TSV file with token type (word/numeral), token to be transcribed, transcription in a semi-standard (partially Hepburn/Nihon-shiki) romanization system, and source of the transcription (dictionary or numeral grammar, for example).
 
