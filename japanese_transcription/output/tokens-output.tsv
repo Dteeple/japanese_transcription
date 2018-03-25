@@ -8,6 +8,7 @@ word	Joseph	JOOSEFU	small Romaji dictionary
 word	David	DEIBIDDO	small Romaji dictionary
 word	oov	---	transliterated
 word	店員	TEN'IN'	kanji dict
+word	キャプチャー	KYAPUTYAA	kanji dict
 num	32802	SAN MAN NI SEN HAPPYAKU NI	number parser
 num	3,209	SAN SEN NIHYAKU KYUU	number parser
 num	一〇〇	ICHI REI REI 	number parser

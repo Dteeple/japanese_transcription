@@ -10,7 +10,7 @@ import os
 import numeral_grammar
 import json
 
-import urllib.request
+
 
 
 
@@ -183,7 +183,8 @@ def parse_num(num, numdict, kanadict, kanjidict):
 
 
 
-def transliterate(inf, kanjijson, kanajson, numjson, romajijson):
+def transliterate(inf, dictjson, kanjijson, kanajson, numjson, romajijson):
+	edict = from_json(dictjson)
 	kanjidict = from_json(kanjijson)
 	numdict = from_json(numjson)
 	kanadict = from_json(kanajson)
@@ -204,15 +205,18 @@ def transliterate(inf, kanjijson, kanajson, numjson, romajijson):
 						try:
 							phon = romajidict[token]
 							source = "small Romaji dictionary"
-
 						except KeyError:
 							try:
-								phon = word(token, kanadict)
-								source = "transliterated"
-							
+								phon = edict[token][0]
+								source = "supplemental dictionary"
 							except KeyError:
-								phon = 'unk'
-								source = "not found"
+								try:
+									phon = word(token, kanadict)
+									source = "transliterated"
+							
+								except KeyError:
+									phon = 'unk'
+									source = "not found"
 						
 					newline = "word\t{0}\t{1}\t{2}\n".format(token, phon, source)
 					print(newline)
@@ -313,7 +317,7 @@ def get_kanji_dict(kanjixml, kanjijson, kanajson): # https://github.com/Doublevi
 	to_json(kanjidict, kanjijson)
 	
 	
-	
+dicttxt = dictfolder + 'japanese_dict.txt'	
 dictjson = dictfolder + 'japanese_dict.json'
 kanajson = dictfolder + 'kanatrans.json'
 numjson = dictfolder + 'num.json'
@@ -332,6 +336,18 @@ if not os.path.exists(romajijson):
 	romajitxt = dictfolder + 'romaji.txt'
 	create_romaji_dict(romajitxt, romajijson)
 	
+if not os.path.exists(dictjson):
+	import urllib.request
+	URL = 'http://ftp.monash.edu/pub/nihongo/edict2u.gz'
+	if not os.path.exists(dictfolder + '/edict2u.gz'):
+		urllib.request.urlretrieve(URL, dictfolder + '/edict2u.gz')
+	
+	import gzip
+	with gzip.open(dictfolder + '/edict2u.gz', 'rb') as f_in, open(dicttxt, 'wb') as f_out:
+		f_out.write( f_in.read() )
+
+	get_dict_from_txt(dicttxt, dictjson, kanajson)
+	
 if not os.path.exists(kanjixml):  # clones git repository containing dictionary JMdict.xml, to be converted to JSON
 	URL = 'https://github.com/Doublevil/JmdictFurigana.git'
 	
@@ -341,4 +357,4 @@ if not os.path.exists(kanjijson):
 	get_kanji_dict(kanjixml, kanjijson, kanajson)
 
 	
-transliterate(inputfolder + 'tokens.tsv', kanjijson, kanajson, numjson, romajijson)
+transliterate(inputfolder + 'tokens.tsv', dictjson, kanjijson, kanajson, numjson, romajijson)
