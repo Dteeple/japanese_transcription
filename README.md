@@ -6,7 +6,7 @@ Sources employed:
 2.  Consulted https://en.wikipedia.org/wiki/Japanese_numerals in creating numeral_grammar.py
 3.  https://github.com/Doublevil/JmdictFurigana/tree/master/JmdictFurigana/Resources/JMdict.xml (large kanji dictionary)
 
-Dictionary (source 3) will be fetched and converted to JSON format at runtime
+Dictionary (source 3) will be fetched and converted to JSON format at runtime.  You'll need to have git-repo installed and configured first.
 
 To run:
 
